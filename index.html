@@ -3,29 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EU Community Portal | Secure Access</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Luna Rossi | Official Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --bg-color: #030712;
-            --card-bg: rgba(17, 24, 39, 0.75);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --accent-gradient: linear-gradient(135deg, #f43f5e 0%, #8b5cf6 50%, #3b82f6 100%);
-            --accent-glow: rgba(244, 63, 94, 0.35);
-        }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-
+        
         body {
-            background-color: var(--bg-color);
+            background-color: #030712;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.12) 0%, transparent 45%);
-            color: var(--text-main);
+                radial-gradient(circle at 50% 0%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+            color: #f8fafc;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,39 +23,93 @@
             padding: 20px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 420px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+        .card {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 32px 24px;
+            padding: 35px 24px;
             border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            max-width: 390px;
+            width: 100%;
             text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Status Badge */
-        .status-badge {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Avatar Container dengan Glow Effect */
+        .avatar-container {
+            position: relative;
+            width: 86px;
+            height: 86px;
+            margin: 0 auto 16px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(244, 63, 94, 0.6);
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #3b82f6;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            border: 2px solid #030712;
+        }
+
+        h1 {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+
+        .location {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Live Counter Premium */
+        .live-box {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(52, 211, 153, 0.1);
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.2);
             color: #34d399;
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            border: 1px solid rgba(52, 211, 153, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 22px;
         }
 
         .pulse-dot {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             background-color: #34d399;
             border-radius: 50%;
             animation: pulse 1.5s infinite;
@@ -77,152 +121,120 @@
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
         }
 
-        .step { display: none; }
-        .step.active { display: block; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        p {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            line-height: 1.5;
         }
 
-        h2 { font-size: 20px; font-weight: 800; margin-bottom: 10px; line-height: 1.35; letter-spacing: -0.3px; }
-        p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
-
-        .options-grid { display: flex; flex-direction: column; gap: 12px; }
-
-        .option-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
-            padding: 16px 18px;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.25s ease;
+        /* Tombol Premium */
+        .btn-link {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            text-align: left;
+            background: linear-gradient(135deg, #f43f5e 0%, #8b5cf6 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .option-btn:hover {
-            background: var(--accent-gradient);
-            border-color: transparent;
+        .btn-link:hover {
+            opacity: 0.95;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--accent-glow);
+            box-shadow: 0 12px 30px rgba(244, 63, 94, 0.4);
         }
 
-        .option-btn i { color: var(--text-muted); font-size: 13px; transition: transform 0.2s; }
-        .option-btn:hover i { color: #fff; transform: translateX(3px); }
-
-        /* Loader */
-        .loading-box { padding: 20px 0; }
-        .spinner {
-            width: 48px; height: 48px;
-            border: 3px solid rgba(255, 255, 255, 0.08);
-            border-top: 3px solid #f43f5e;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            animation: spin 0.8s linear infinite;
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .loading-text { font-size: 14px; font-weight: 700; color: #f43f5e; margin-bottom: 6px; }
 
-        footer { margin-top: 24px; font-size: 10px; color: #6b7280; letter-spacing: 0.3px; }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: none;
+        }
+
+        .btn-link i {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.2s;
+        }
+
+        .btn-link:hover i {
+            transform: translateX(3px);
+            color: #fff;
+        }
+
+        footer {
+            margin-top: 26px;
+            font-size: 10px;
+            color: #64748b;
+            letter-spacing: 0.3px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Status Bar -->
-        <div class="status-badge">
+    <div class="card">
+        <!-- Avatar dengan Centang Biru Terverifikasi -->
+        <div class="avatar-container">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Luna Rossi" class="avatar">
+            <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
+        </div>
+        
+        <h1>Luna Rossi</h1>
+        <div class="location"><i class="fa-solid fa-location-dot"></i> Milan, Italy 🇮🇹</div>
+        
+        <!-- Indikator Live Visitor -->
+        <div class="live-box">
             <div class="pulse-dot"></div>
-            <span>EU Gateway &bull; Secure Connection</span>
+            <span id="visitor-count">142 active members online</span>
         </div>
+        
+        <p>Tap below to access my private gallery and connect directly.</p>
+        
+        <!-- Tombol Interaktif Utama -->
+        <a href="#" onclick="redirectUser(event)" class="btn-link">
+            <span>💬 Start Private Chat</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        
+        <a href="#" onclick="redirectUser(event)" class="btn-link btn-secondary">
+            <span>✨ View Verified Directory</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
 
-        <!-- STEP 1: Micro-Commitment Selection -->
-        <div class="step active" id="step-1">
-            <h2>Select your preferred community interaction:</h2>
-            <p>Filter active profiles matching your preferences in Europe.</p>
-            
-            <div class="options-grid">
-                <button class="option-btn" onclick="nextStep(2)">
-                    <span>Casual Chat & Local Meet</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="option-btn" onclick="nextStep(2)">
-                    <span>Late Night Private Chats</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="option-btn" onclick="nextStep(2)">
-                    <span>Open Dating Profiles</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 2: Age Verification Check -->
-        <div class="step" id="step-2">
-            <h2>Age & Regional Verification</h2>
-            <p>Confirm that you are 18+ to unlock regional directory access.</p>
-            
-            <div class="options-grid">
-                <button class="option-btn" onclick="executeCloakedRedirect()">
-                    <span>I am 18 Years or Older (Proceed)</span>
-                    <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="option-btn" onclick="executeCloakedRedirect()">
-                    <span>Exit Portal</span>
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 3: Fake Loader & Dynamic Redirect -->
-        <div class="step" id="step-3">
-            <div class="loading-box">
-                <div class="spinner"></div>
-                <div class="loading-text" id="load-status">Decrypting secure session...</div>
-                <p>Establishing encrypted routing to destination...</p>
-            </div>
-        </div>
-
-        <footer>
-            Strictly 18+ &bull; End-to-End Encrypted &bull; Anti-Bot Protected
-        </footer>
+        <footer>Secure &bull; Encrypted Portal &bull; 18+ Only</footer>
     </div>
 
     <script>
-        // Link CPA baru Anda yang dipecah untuk mengelabui bot / crawler sosmed
+        // Efek dinamis naik-turun angka visitor secara natural agar terlihat hidup
+        setInterval(() => {
+            const randomCount = Math.floor(Math.random() * (180 - 120 + 1)) + 120;
+            document.getElementById('visitor-count').innerText = randomCount + ' active members online';
+        }, 5000);
+
+        // [ANTI-BOT CLOAKING] Link CPA dipecah aman di balik skrip JavaScript
         const part1 = "https://safeoffers";
         const part2 = ".pro/a/XDYKZS9";
         const part3 = "zKuD29p";
         
-        function getTargetUrl() {
-            return part1 + part2 + part3;
-        }
-
-        function nextStep(stepNumber) {
-            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-            document.getElementById('step-' + stepNumber).classList.add('active');
-        }
-
-        function executeCloakedRedirect() {
-            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-            document.getElementById('step-3').classList.add('active');
-
-            setTimeout(() => {
-                document.getElementById('load-status').innerText = "Verifying regional compliance...";
-            }, 1000);
-
-            setTimeout(() => {
-                document.getElementById('load-status').innerText = "Access granted! Redirecting...";
-            }, 2100);
-
-            setTimeout(() => {
-                window.location.replace(getTargetUrl());
-            }, 2800);
+        function redirectUser(e) {
+            e.preventDefault();
+            // Efek getar mikro (haptic feedback) jika didukung perangkat seluler
+            if (navigator.vibrate) {
+                navigator.vibrate(40);
+            }
+            window.location.href = part1 + part2 + part3;
         }
     </script>
 
